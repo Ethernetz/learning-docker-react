@@ -19,8 +19,8 @@ jobs:
       - name: Login to DockerHub
         uses: docker/login-action@v2
         with:
-          username: DOCKER_USER
-          password: DOCKER_PASS
+          username: $DOCKER_USER
+          password: $DOCKER_PASS
 
       - name: Build docker images
         run: docker-compose build
@@ -40,8 +40,8 @@ jobs:
       - name: Login to DockerHub
         uses: docker/login-action@v2
         with:
-          username: DOCKER_USER
-          password: DOCKER_PASS
+          username: $DOCKER_USER
+          password: $DOCKER_PASS
 
       - name: Build and push
         uses: docker/build-push-action@v2
