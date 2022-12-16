@@ -1,4 +1,4 @@
-name: Dev deployment from Github to AWS
+name: Run tests and deploy to AWS
 on:
   push:
     branches:
@@ -26,6 +26,7 @@ jobs:
         run: CI=true docker-compose run tests
   deploy:
     name: Deploy to docker and AWS
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
