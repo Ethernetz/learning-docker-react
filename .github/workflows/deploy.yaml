@@ -9,7 +9,6 @@ jobs:
       name: Run test suite
       runs-on: ubuntu-latest
       env:
-        COMPOSE_FILE: .ci/docker-compose.yml
         DOCKER_USER: ${{ secrets.DOCKER_USERNAME }}
         DOCKER_PASS: ${{ secrets.DOCKER_PASSWORD }}
 
@@ -20,8 +19,8 @@ jobs:
       - name: Login to DockerHub
         uses: docker/login-action@v2
         with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
+          username: DOCKER_USER
+          password: DOCKER_PASS
 
       - name: Build docker images
         run: docker-compose build
@@ -41,8 +40,8 @@ jobs:
       - name: Login to DockerHub
         uses: docker/login-action@v2
         with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
+          username: DOCKER_USER
+          password: DOCKER_PASS
 
       - name: Build and push
         uses: docker/build-push-action@v2
