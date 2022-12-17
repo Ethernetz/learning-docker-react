@@ -63,4 +63,5 @@ jobs:
           existing_bucket_name: elasticbeanstalk-us-east-1-676753199952
           region: us-east-1
           version_label: ${{ github.run_number }}
+          version_description: ${{ github.SHA }}
           deployment_package: deploy.zip
